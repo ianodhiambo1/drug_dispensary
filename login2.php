@@ -2,22 +2,21 @@
 
 include 'config.php';
 session_start();
-
 if(isset($_POST['submit'])){
-
+   
    $Uname = mysqli_real_escape_string($conn, $_POST['Uname']);
    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
-
+   
    $select = mysqli_query($conn, "SELECT * FROM `user_info` WHERE 
    username = '$Uname' AND password = '$pass'") or die('query failed');
 
-   if(mysqli_num_rows($select) > 0){
-      $row = mysqli_fetch_assoc($select);
-      $_SESSION['user_id'] = $row['id'];
-      header('location:index2.php');
-   }else{
-      $message[] = 'incorrect password or email!';
-   }
+if(mysqli_num_rows($select) > 0){
+   $row = mysqli_fetch_assoc($select);
+   $_SESSION['user_id'] = $row['id'];
+   header('location:index2.php');
+}else{
+   $message[] = 'incorrect password or email!';
+}
 
 }
 
@@ -28,21 +27,28 @@ if(isset($_POST['submit'])){
 <head>
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body>
-    <h2>Login Page</h2><br>
-    <div class="page">
-    <?php
+    <script src="script/index.js"></script>
+   </head>
+   <body>
+      <h2>Login Page</h2><br>
+      <div class="page">
+         <?php
         if(isset($message)){
            foreach($message as $message){
               echo '<div class="message" onclick="this.remove();">'.$message.'</div>';
-           }
-        }
-        ?>
+            }
+         }
+         // if (isset($_SESSION['registration_success']) && $_SESSION['registration_success']) {
+            echo '<div class="message" id="message"><p>User successfully registered</p></div>';
+            
+            // Unset the session variable to prevent displaying the message again
+         //    unset($_SESSION['registration_success']);
+         // }
+         ?>
     <form id="login" method="post" action="login2.php">
-        <label><b>User Name
-        </b>
-        </label>
+       <label><b>User Name
+          </b>
+         </label>
         <input type="text" name="Uname" id="Uname" placeholder="Username" required>
         <br><br>
         <label><b>Password

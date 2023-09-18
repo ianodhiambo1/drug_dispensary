@@ -29,12 +29,13 @@ if (isset($_GET['logout'])) {
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <script src="script/index.js"></script>
 </head>
 
 <body>
 
    <div class="container">
-      <div class="message">
+      <div class="message" id="message">
          <p>Logged In Successfully</p>
       </div>
       <!-- Navbar include -->
@@ -107,19 +108,6 @@ if (isset($_GET['logout'])) {
          <p>Distribution centre: 1st Floor, Westside Tower, Suite 101B, Lower Kabete Road, Westlands, Nairobi, Kenya
             Postal code; 46986 : 00100 Nairobi Kenya.</p>
       </div>
-
-      <script>
-         setTimeout(() => {
-         const box = document.getElementById('box');
-
-         // 👇️ removes element from DOM
-         box.style.display = 'none';
-
-         // 👇️ hides element (still takes up space on page)
-         // box.style.visibility = 'hidden';
-         }, 1000); // 👈️ time in milliseconds
-
-      </script>
 </body>
 
 </html>

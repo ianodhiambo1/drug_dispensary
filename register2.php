@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
       $messages[] = 'user already exist!';
    }else{
       mysqli_query($conn, "INSERT INTO `user_info`(username, email, password,fName,lName,age,address,type) VALUES('$name', '$email', '$pass','$Fname','$Lname','$age','$address','Patient')") or die('query failed');
-      $messages[] = 'registered successfully!';
+      $_SESSION['registration_success'] = true;
       header('location:login2.php');
    }
 
@@ -34,6 +34,7 @@ if(isset($_POST['submit'])){
 <head>
     <title>Sign Up Form</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="script/index.js"></script>
 </head>
 <body>
     <h2>Sign Up Page</h2><br>
