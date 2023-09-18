@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($select) > 0){
       $messages[] = 'user already exist!';
    }else{
-      mysqli_query($conn, "INSERT INTO `user_info`(name, email, password,fName,lName,age,address) VALUES('$name', '$email', '$pass','$Fname','$Lname','$age','$address')") or die('query failed');
+      mysqli_query($conn, "INSERT INTO `user_info`(username, email, password,fName,lName,age,address,type) VALUES('$name', '$email', '$pass','$Fname','$Lname','$age','$address','Patient')") or die('query failed');
       $messages[] = 'registered successfully!';
       header('location:login2.php');
    }

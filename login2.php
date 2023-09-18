@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
 
    $select = mysqli_query($conn, "SELECT * FROM `user_info` WHERE 
-   name = '$Uname' AND password = '$pass'") or die('query failed');
+   username = '$Uname' AND password = '$pass'") or die('query failed');
 
    if(mysqli_num_rows($select) > 0){
       $row = mysqli_fetch_assoc($select);
