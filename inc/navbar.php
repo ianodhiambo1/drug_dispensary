@@ -15,8 +15,11 @@
    <div class="userInfo">
       <a href="shop.php"><button>Shop</button></a>
       <a href="prescriptions.php"><button>Your Prescriptions</button></a>
-      <a href="index2.php?logout=<?php echo $user_id; ?>" 
-         onclick="return confirm('are your sure you want to logout?');" class="logOut">Log out</a>
+      <a href=
+      "index2.php?logout=<?php echo $user_id; ?>" 
+         onclick="return 
+         confirm('are your sure you want to logout?');" 
+         class="logOut">Log out</a>
       <span><?php echo $fetch_user['username']; ?></span>
    </div>
    </div>
