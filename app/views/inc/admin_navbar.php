@@ -1,3 +1,28 @@
+<?php
+    session_start();
+
+    // Check if the user is logged in as an admin
+    if (!isset($_SESSION["UserID"])) {
+        header("Location: login.php");
+        exit;
+    }
+
+    // Database connection
+    include('../config/database.php');
+    // Retrieve admin details
+    $adminId = $_SESSION["UserID"];
+    if(isset($_GET['logout'])){
+        unset($adminId);
+        session_destroy();
+        header("Location: login.php");
+
+    }
+    $query = "SELECT * FROM users WHERE UserID='$adminId' AND Role='Admin'";
+    $result = mysqli_query($conn, $query);
+    $admin = mysqli_fetch_assoc($result);
+
+    ?>
+
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a href="index.html" class="flex items-center">
@@ -5,8 +30,8 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MataDrugs</span>
         </a>
         <div class="flex items-center">
-            <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">Username</a>
-            <a href="#" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Logout</a>
+            <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"><?php echo $admin['Username']?><a>
+            <a href="index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Logout</a>
         </div>
     </div>
 </nav>
@@ -18,7 +43,7 @@
                     <a href="index.php" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="drugs.php" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
+                    <a href="../public/index.php?action=display" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
                 </li>
                 <li>
                     <a href="users.php" class="text-gray-900 dark:text-white hover:underline">Users</a>

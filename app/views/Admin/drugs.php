@@ -8,13 +8,14 @@
 </head>
 <body>
  <!-- Navbar    -->
-<?php include('../inc/admin_navbar.php')?>
+<?php include('C:/xampp/htdocs/drug_dispensary/app/views/inc/admin_navbar.php')?>
  <!-- Navbar    -->
 
  <div class="choose flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4"  >
     <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm ">
-        <li> <a href="drugs.php" class="hover:underline">Table</a></li>
-        <li><a href="drugs_image.php" class="hover:underline">Image</a></li>
+        <li> <a href="../public/index.php?action=display" class="hover:underline">Table</a></li>
+        <li><a href="../public/index.php?action=displayImage" class="hover:underline">Image</a></li>
+        <li><a href="../public/index.php?action=addDrug" class="hover:underline">Add Drug</a></li>
     </ul>
 </div>
   
@@ -30,25 +31,25 @@
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Color
+                    Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Quantity
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Accesories
+                    Pharmaceutical Company
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Available
+                    Description
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Price
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Weight
+                    Category
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -56,6 +57,7 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach ($drugs as $drug): ?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
@@ -64,31 +66,32 @@
                     </div>
                 </td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    <?php echo $drug['DrugID']; ?>
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    <?php echo $drug['DrugName']; ?>
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                <?php echo $drug['StockQuantity']; ?>
                 </td>
                 <td class="px-6 py-4">
-                    Yes
+                <?php echo $drug['PharmaceuticalCompany']; ?>
                 </td>
                 <td class="px-6 py-4">
-                    Yes
+                <?php echo $drug['Description']; ?>
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                <?php echo $drug['Price']; ?>
                 </td>
                 <td class="px-6 py-4">
-                    3.0 lb.
+                <?php echo $drug['Category']; ?>
                 </td>
                 <td class="flex items-center px-6 py-4 space-x-3">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                 </td>
             </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
