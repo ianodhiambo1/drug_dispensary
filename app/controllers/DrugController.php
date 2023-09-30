@@ -70,7 +70,7 @@ class DrugController
                 echo "Drug Adding failed";
             }
         }
-        require("../views/Admin/add_drug.php");
+        require("../views/Admin/add_drugs.php");
     }
     public function displayCategory($category)
     {
