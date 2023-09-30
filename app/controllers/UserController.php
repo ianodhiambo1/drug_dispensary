@@ -1,4 +1,8 @@
 <?php
+namespace App\Controllers;
+
+use App\Models\UserModel;
+
 class UserController {
     private $model;
 
@@ -8,13 +12,16 @@ class UserController {
 
     public function login() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            $user = $this->model->getUserByUsername($username);
+            session_start();
+            $username = $_POST["Username"];
+            $password = $_POST["Password"];
+            $role = $_POST["Role"];
+            $user = $this->model->getUserByUsername($username,$role);
 
-            if ($user && password_verify($password, $user["password"])) {
+            if ($user && password_verify($password, $user["Password"])) {
                 // Successful login, redirect to a welcome page or dashboard
-                header("Location: welcome.php");
+                $_SESSION['UserID'] = $user['UserID'];
+                header("Location: ../views/$role/index.php ");
                 exit;
             } else {
                 // Invalid login, show an error message
@@ -23,17 +30,18 @@ class UserController {
         }
 
         // Display the login form
-        require_once("../view/admin/login.php");
+        require_once("../views/$role/login.php");
     }
 
     public function signup() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $username = $_POST["username"];
-            $password = $_POST["password"];
+            $username = $_POST["Username"];
+            $password = $_POST["Password"];
+            $role = $_POST["Role"];
 
-            if ($this->model->createUser($username, $password)) {
+            if ($this->model->createUser($username, $password,$role)) {
                 // Successful registration, redirect to a login page
-                header("Location: index.php?action=login");
+                header("Location: /index.php?action=login");
                 exit;
             } else {
                 // Registration failed, show an error message
@@ -42,7 +50,8 @@ class UserController {
         }
 
         // Display the sign-up form
-        require_once("../view/admin/login.php");
+        require_once("../views/$role/login.php");
     }
 }
 ?>
+
