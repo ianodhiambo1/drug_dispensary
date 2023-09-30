@@ -39,6 +39,14 @@ class DrugModel{
         }
         return $drugs;
     }
+    public function AddDrug($name, $pharmco,$price,$category,$description,$uploadPath){
+        $sql="INSERT INTO drugs (DrugName,PharmaceuticalCompany,Price,Category,Description,ImageUrl) 
+        VALUES (?,?,?,?,?,?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("ssssss",$name, $pharmco,$price,$category,$description,$uploadPath);
+        return $stmt->execute();
+
+    }
 }
 
 
