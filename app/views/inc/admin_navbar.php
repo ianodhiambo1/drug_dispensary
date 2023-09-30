@@ -15,16 +15,16 @@
         <div class="flex items-center">
             <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
                 <li>
-                    <a href="index.html" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
+                    <a href="index.php" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="drugs.html" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
+                    <a href="drugs.php" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
                 </li>
                 <li>
-                    <a href="users.html" class="text-gray-900 dark:text-white hover:underline">Users</a>
+                    <a href="users.php" class="text-gray-900 dark:text-white hover:underline">Users</a>
                 </li>
                 <li>
-                    <a href="prescriptions.html" class="text-gray-900 dark:text-white hover:underline">Prescriptions</a>
+                    <a href="prescriptions.php" class="text-gray-900 dark:text-white hover:underline">Prescriptions</a>
                 </li>
             </ul>
         </div>

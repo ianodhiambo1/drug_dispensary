@@ -8,13 +8,13 @@
 </head>
 <body>
  <!-- Navbar    -->
-<?php include("inc/admin_navbar.php")?>
+<?php include('../inc/admin_navbar.php')?>
  <!-- Navbar    -->
 
  <div class="choose flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4"  >
     <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm ">
-        <li> <a href="drugs.html" class="hover:underline">Table</a></li>
-        <li><a href="drugs_image.html" class="hover:underline">Image</a></li>
+        <li> <a href="drugs.php" class="hover:underline">Table</a></li>
+        <li><a href="drugs_image.php" class="hover:underline">Image</a></li>
     </ul>
 </div>
   

@@ -8,38 +8,7 @@
 </head>
 <body>
  <!-- Navbar    -->
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-        <a href="index.html" class="flex items-center">
-            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MataDrugs</span>
-        </a>
-        <div class="flex items-center">
-            <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">Username</a>
-            <a href="#" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Logout</a>
-        </div>
-    </div>
-</nav>
-<nav class="bg-gray-50 dark:bg-gray-700">
-    <div class="max-w-screen-xl px-4 py-3 mx-auto">
-        <div class="flex items-center">
-            <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
-                <li>
-                    <a href="index.html" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
-                </li>
-                <li>
-                    <a href="drugs.html" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
-                </li>
-                <li>
-                    <a href="users.html" class="text-gray-900 dark:text-white hover:underline">Users</a>
-                </li>
-                <li>
-                    <a href="prescriptions.html" class="text-gray-900 dark:text-white hover:underline">Prescriptions</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+ <?php include('../inc/admin_navbar.php')?>
  <!-- Navbar    -->
 
 
@@ -79,102 +48,6 @@
         </div>
     </div>
 </div>
-<div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="https://www.henryschein.com/Products/2770780_US_Front_01_600x600.jpg" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Amoxicillin</h5>
-        </a>
-
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View Details</a>
-        </div>
-    </div>
-</div>
-<div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="https://www.henryschein.com/Products/2770780_US_Front_01_600x600.jpg" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Amoxicillin</h5>
-        </a>
-
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View Details</a>
-        </div>
-    </div>
-</div>
-<div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="https://www.henryschein.com/Products/2770780_US_Front_01_600x600.jpg" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Amoxicillin</h5>
-        </a>
-
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View Details</a>
-        </div>
-    </div>
-</div>
-<div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="https://www.henryschein.com/Products/2770780_US_Front_01_600x600.jpg" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Amoxicillin</h5>
-        </a>
-
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View Details</a>
-        </div>
-    </div>
-</div>
-<div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="https://www.henryschein.com/Products/2770780_US_Front_01_600x600.jpg" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Amoxicillin</h5>
-        </a>
-
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View Details</a>
-        </div>
-    </div>
-</div>
-<div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="https://www.henryschein.com/Products/2770780_US_Front_01_600x600.jpg" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Amoxicillin</h5>
-        </a>
-
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View Details</a>
-        </div>
-    </div>
-</div>
-
-</div>
-  
-  
-
-
 
 </body>
 </html>
