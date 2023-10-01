@@ -62,31 +62,19 @@ class DrugModel{
 
     }
     public function updateDrug($id, $name, $pharmco, $price, $category, $description) {
-        $sql = "UPDATE drugs SET DrugID=?, PharmaceuticalCompany=?, Price=?, Category=?, Description=? WHERE DrugID=?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("ssdssi", $name, $pharmco, $price, $category, $description, $id);
-        if ($stmt->execute()) {
-            // Update successful
-            return true;
-        } else {
-            // Update failed
-            return false;
-        }
+        $sql = "UPDATE `drugs` SET `DrugName`='$name', `PharmaceuticalCompany`='$pharmco', `Price`='$price', `Category`='$category', `Description`='$description' WHERE `drugs`.`DrugID`=$id;";
+        echo $sql;
+        
+        $result = $this->db->query($sql);
+        return $result;
     }
 
 
     public function deleteDrug($id) {
-        $sql = "DELETE FROM drugs WHERE id=?";
+        $sql = "DELETE FROM drugs WHERE DrugID=?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $id);
-        
-        if ($stmt->execute()) {
-            // Deletion successful
-            return true;
-        } else {
-            // Deletion failed
-            return false;
-        }
+        return $stmt->execute();
     }
 }
 

@@ -88,7 +88,7 @@ class DrugController
                 }
             }
             if ($this->model->AddDrug($name, $pharmco, $price, $category, $description, $imageUrl)) {
-                header("Location: /index.php?action=displayImage");
+                header("Location: ../public/index.php?action=displayImage");
                 exit;
             } else {
                 // Registration failed, show an error message
@@ -111,16 +111,20 @@ class DrugController
     public function editDrugs($id) {
         // Assuming you have the drug data in the $_POST array
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $name = $_POST['DrugID'];
+        $name = $_POST['DrugName'];
         $pharmco = $_POST['PharmaceuticalCompany'];
         $price = $_POST['Price'];
         $category = $_POST['Category'];
         $description = $_POST['Description'];
+        if(isset($_GET["id"])){
+            $id = $_GET['id'];}
+
 
         $success = $this->model->updateDrug($id, $name, $pharmco, $price, $category, $description);
+        
 
         if ($success) {
-            header("Location: /index.php?action=display&message=1");
+            header("Location: ../public/index.php?action=display&message=1");
             exit;
         } else {
             echo "Drug Adding failed";
@@ -138,11 +142,9 @@ class DrugController
         $success = $this->model->deleteDrug($id);
 
         if ($success) {
-            // Drug deleted successfully
-            // You can redirect to a success page or do something else
+            header("Location: ../public/index.php?action=display&message=2");
         } else {
-            // Error deleting the drug
-            // Handle the error (e.g., display an error message)
+            return "Error deleting drug";
         }
     }
     public function displayDrugDetails($id){
@@ -151,7 +153,7 @@ class DrugController
             echo "Error fetching drug details";
             return;
         }
-        require("../views/Admin/drugs_details.php");
+        require("../views/Admin/drug_details.php");
     }
     
 }
