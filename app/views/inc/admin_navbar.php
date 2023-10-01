@@ -8,7 +8,7 @@
     }
 
     // Database connection
-    include('../config/database.php');
+    include('C:xampp/htdocs/drug_dispensary/app/config/database.php');
     // Retrieve admin details
     $adminId = $_SESSION["UserID"];
     if(isset($_GET['logout'])){
@@ -43,7 +43,7 @@
                     <a href="index.php" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="../public/index.php?action=display" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
+                    <a href="../../../app/public/index.php?action=display" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
                 </li>
                 <li>
                     <a href="users.php" class="text-gray-900 dark:text-white hover:underline">Users</a>

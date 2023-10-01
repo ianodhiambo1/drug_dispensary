@@ -12,6 +12,7 @@ $drugModel = new DrugModel($db);
 // Include the controller and handle actions
 $action = isset($_GET['action']) ? $_GET['action'] : 'login';
 $category = isset($_GET['cat']) ? $_GET['cat']: 'Analgesics';
+$id = isset($_GET['id']) ? $_GET['id']: '0';
 use App\Controllers\UserController;
 use App\Controllers\DrugController;
 
@@ -33,6 +34,15 @@ if ($action === 'login') {
 } 
  elseif($action==='addDrug'){
     $drugController->addDrugs();
+} 
+ elseif($action==='editDrug'){
+    $drugController->editDrugs($id);
+} 
+ elseif($action==='deleteDrug'){
+    $drugController->deleteDrugs($id);
+} 
+ elseif($action==='viewDrug'){
+    $drugController->displayDrugDetails($id);
 } 
 else {
     // Handle other actions or display an error

@@ -9,7 +9,7 @@
 <body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
     <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
     <h1 class="text-xl font-bold text-white capitalize dark:text-white">Drug Details</h1>
-    <form action="../public/index.php?action=addDrug" method="POST">
+    <form action="../public/index.php?action=addDrug" method="POST" enctype="multipart/form-data">
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
                 <label class="text-white dark:text-gray-200" for="username">Name</label>
@@ -49,7 +49,7 @@
                   <div class="flex text-sm text-gray-600">
                     <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                       <span class="">Upload a file</span>
-                      <input type="file" name="image" id="image" accept="image/*" required>
+                      <input type="file" name="fileToUpload" id="image" accept="image/*" required>
                     </label>
                     <p class="pl-1 text-white">or drag and drop</p>
                   </div>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="flex justify-end mt-6">
-            <input type="submit" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600" value="Upload">
+            <input type="submit" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600" name="submit" value="Upload">
         </div>
     </form>
 

@@ -39,7 +39,7 @@
                 <div class=" mt-5 w-fit max-w-xs bg-white border border-gray-200 rounded-lg shadow mr-3 ">
                     <a href="#">
                         <img class="p-8 rounded-t-lg"
-                            src="<?php echo $drug['ImageUrl']; ?>"
+                            src="<?php echo $drug['ImageUrl'] ?>"
                             alt="product image" />
                     </a>
                     <div class="px-5 pb-5">
@@ -49,7 +49,7 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-3xl font-bold text-gray-900 "><?php echo $drug['Price'];?></span>
-                            <a href="#"
+                            <a href="../public/index.php?action=viewDrug&id=<?php echo $drug['DrugID'];?>"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View
                                 Details</a>
                         </div>

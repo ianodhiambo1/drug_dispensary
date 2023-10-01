@@ -36,33 +36,58 @@ class DrugController
             $category = $_POST['Category'];
             $description = $_POST['Description'];
 
-            // Check if a file was uploaded without errors
-            if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
-                $file = $_FILES["image"];
-                $uploadDir = "uploads/"; // Directory where uploaded images will be stored
-                $uploadPath = $uploadDir . basename($file["name"]);
 
-                // Check if the file is an image
-                $imageFileType = strtolower(pathinfo($uploadPath, PATHINFO_EXTENSION));
-                $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+            $target_dir = "../uploads/";
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-                if (in_array($imageFileType, $allowedExtensions)) {
-                    // Move the uploaded file to the specified directory
-                    if (move_uploaded_file($file["tmp_name"], $uploadPath)) {
-                        // File was uploaded successfully
-                        echo "Image uploaded successfully.";
-
-                        // You can store the $uploadPath in the database if needed
-                    } else {
-                        echo "Error uploading image.";
-                    }
+            // Check if image file is a actual image or fake image
+            if (isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
                 } else {
-                    echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
+                    echo "File is not an image.";
+                    $uploadOk = 0;
                 }
-            } else {
-                echo "No file uploaded or an error occurred during upload.";
             }
-            if ($this->model->AddDrug($name, $pharmco,$price,$category,$description,$uploadPath)) {
+
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                echo "Sorry, file already exists.";
+                $uploadOk = 0;
+            }
+
+            // Check file size
+            if ($_FILES["fileToUpload"]["size"] > 500000) {
+                echo "Sorry, your file is too large.";
+                $uploadOk = 0;
+            }
+
+            // Allow certain file formats
+            if (
+                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif"
+            ) {
+                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $uploadOk = 0;
+            }
+
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                    $imageUrl=htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                }
+            }
+            if ($this->model->AddDrug($name, $pharmco, $price, $category, $description, $imageUrl)) {
                 header("Location: /index.php?action=displayImage");
                 exit;
             } else {
@@ -79,8 +104,56 @@ class DrugController
             echo "Error fetching drug details";
             return;
         }
+        
+
         require("../views/Admin/drugs_image.php");
     }
+    public function editDrugs($id) {
+        // Assuming you have the drug data in the $_POST array
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $name = $_POST['DrugID'];
+        $pharmco = $_POST['PharmaceuticalCompany'];
+        $price = $_POST['Price'];
+        $category = $_POST['Category'];
+        $description = $_POST['Description'];
+
+        $success = $this->model->updateDrug($id, $name, $pharmco, $price, $category, $description);
+
+        if ($success) {
+            header("Location: /index.php?action=display&message=1");
+            exit;
+        } else {
+            echo "Drug Adding failed";
+        }
+    }
+    $drugs=$this->model->getData($id);
+    if ($drugs === false) {
+        echo "Error fetching drug details";
+        return;
+    }
+    require("../views/Admin/edit_drugs.php");
+}
+
+    public function deleteDrugs($id) {
+        $success = $this->model->deleteDrug($id);
+
+        if ($success) {
+            // Drug deleted successfully
+            // You can redirect to a success page or do something else
+        } else {
+            // Error deleting the drug
+            // Handle the error (e.g., display an error message)
+        }
+    }
+    public function displayDrugDetails($id){
+        $drugs=$this->model->getData($id); 
+        if ($drugs === false) {
+            echo "Error fetching drug details";
+            return;
+        }
+        require("../views/Admin/drugs_details.php");
+    }
+    
 }
 
 ?>

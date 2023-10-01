@@ -87,8 +87,8 @@
                 <?php echo $drug['Category']; ?>
                 </td>
                 <td class="flex items-center px-6 py-4 space-x-3">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                    <a href="../public/index.php?action=editDrug&id=<?php echo $drug['DrugID'];?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $drug['DrugID'];?>" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                 </td>
             </tr>
             <?php endforeach; ?>
