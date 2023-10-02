@@ -31,7 +31,7 @@
         </a>
         <div class="flex items-center">
             <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"><?php echo $admin['Username']?><a>
-            <a href="index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Logout</a>
+            <a href="http://localhost/drug_dispensary/app/views/Admin/index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Logout</a>
         </div>
     </div>
 </nav>

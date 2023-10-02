@@ -15,7 +15,7 @@
       
     <div class="form signup">
         <header>Admin Sign Up</header>
-        <form action="C:/xampp/htdocs/drug_dispensary/app/public/index.php?action=signup" method="POST">
+        <form action="../../public/index.php?action=signup" method="POST">
           <input type="text" placeholder="User name" name="Username" required />
           <input style="display: none;" type="text" value="Admin" name="Role" required />
           <input type="password" placeholder="Password" name="Password" required />

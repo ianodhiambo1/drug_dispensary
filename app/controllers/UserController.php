@@ -30,8 +30,9 @@ class UserController {
         }
 
         // Display the login form
-        require_once("../views/$role/login.php");
+        require_once("../views/Admin/login.php");
     }
+
 
     public function signup() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
