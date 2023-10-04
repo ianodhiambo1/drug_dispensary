@@ -11,6 +11,7 @@ $drugModel = new DrugModel($db);
 
 // Include the controller and handle actions
 $action = isset($_GET['action']) ? $_GET['action'] : 'login';
+$role = isset($_GET['role']) ? $_GET['role'] : 'Patient';
 $category = isset($_GET['cat']) ? $_GET['cat']: 'Analgesics';
 $id = isset($_GET['id']) ? $_GET['id']: '0';
 use App\Controllers\UserController;
@@ -20,9 +21,9 @@ $controller = new UserController($userModel);
 $drugController = new DrugController($drugModel);
 
 if ($action === 'login') {
-    $controller->login();
+    $controller->login($role);
 } elseif ($action === 'signup') {
-    $controller->signup();
+    $controller->signup($role);
 } elseif($action==='display'){
     $drugController->displayDrugs();
 } 

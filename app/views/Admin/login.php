@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Login Admin</title>
-    <link rel="stylesheet" href="css/style_login.css" />
+    <link rel="stylesheet" href="../views/css/style_login.css" />
     <script src="../custom-scripts.js" defer></script>
   </head>
   <body>
@@ -15,7 +15,7 @@
       
     <div class="form signup">
         <header>Admin Sign Up</header>
-        <form action="../../public/index.php?action=signup" method="POST">
+        <form action="../../public/index.php?action=signup?role=Admin" method="POST">
           <input type="text" placeholder="User name" name="Username" required />
           <input style="display: none;" type="text" value="Admin" name="Role" required />
           <input type="password" placeholder="Password" name="Password" required />
@@ -28,7 +28,7 @@
       </div>
       <div class="form login">
         <header>Admin Login</header>
-        <form action="../../public/index.php?action=login" method="POST">
+        <form action="../../public/index.php?action=login?role=Admin" method="POST">
           <input type="text" placeholder="Username" name="Username" required />
           <input style="display: none;" type="text" value="Admin" name="Role" required />
           <input type="password" placeholder="Password" name="Password" required />

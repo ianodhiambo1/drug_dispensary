@@ -10,12 +10,11 @@ class UserController {
         $this->model = $model;
     }
 
-    public function login() {
+    public function login($role) {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             session_start();
             $username = $_POST["Username"];
             $password = $_POST["Password"];
-            $role = $_POST["Role"];
             $user = $this->model->getUserByUsername($username,$role);
 
             if ($user && password_verify($password, $user["Password"])) {
@@ -25,28 +24,27 @@ class UserController {
                 exit;
             } else {
                 // Invalid login, show an error message
-                echo "Invalid username or password";
+                header("Location: ../public/index.php?action=login&message=0&role=$role");
             }
         }
 
         // Display the login form
-        require_once("../views/Admin/login.php");
+        require_once("../views/$role/login.php");
     }
 
 
-    public function signup() {
+    public function signup($role) {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $username = $_POST["Username"];
             $password = $_POST["Password"];
-            $role = $_POST["Role"];
 
             if ($this->model->createUser($username, $password,$role)) {
                 // Successful registration, redirect to a login page
-                header("Location: /index.php?action=login");
+                header("Location: /index.php?action=login?role=$role");
                 exit;
             } else {
                 // Registration failed, show an error message
-                echo "Registration failed";
+                header("Location: ../public/index.php?action=login&message=0&role=$role");
             }
         }
 
