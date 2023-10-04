@@ -40,7 +40,7 @@ class UserController {
 
             if ($this->model->createUser($username, $password,$role)) {
                 // Successful registration, redirect to a login page
-                header("Location: /index.php?action=login?role=$role");
+                header("Location: ../public/index.php?action=login&message=1&role=$role");
                 exit;
             } else {
                 // Registration failed, show an error message

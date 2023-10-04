@@ -3,7 +3,7 @@
 
     // Check if the user is logged in as an admin
     if (!isset($_SESSION["UserID"])) {
-        header("Location: login.php");
+        header("Location: http://localhost/drug_dispensary/app/public/index.php?action=login&role=Admin");
         exit;
     }
 
@@ -14,7 +14,7 @@
     if(isset($_GET['logout'])){
         unset($adminId);
         session_destroy();
-        header("Location: login.php");
+        header("Location: http://localhost/drug_dispensary/app/public/index.php?action=login&role=Admin");
 
     }
     $query = "SELECT * FROM users WHERE UserID='$adminId' AND Role='Admin'";
@@ -31,7 +31,7 @@
         </a>
         <div class="flex items-center">
             <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"><?php echo $admin['Username']?><a>
-            <a href="http://localhost/drug_dispensary/app/views/Admin/index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Logout</a>
+            <a href="http://localhost/drug_dispensary/app/views/Admin/index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-red-600 dark:text-red-500 hover:underline">Logout</a>
         </div>
     </div>
 </nav>
