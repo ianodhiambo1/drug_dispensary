@@ -45,6 +45,9 @@ if ($action === 'login') {
  elseif($action==='viewDrug'){
     $drugController->displayDrugDetails($id);
 } 
+ elseif($action==='shop'){
+    $drugController->shop();
+} 
 else {
     // Handle other actions or display an error
 }
