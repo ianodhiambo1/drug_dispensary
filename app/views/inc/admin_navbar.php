@@ -3,21 +3,21 @@
 
     // Check if the user is logged in as an admin
     if (!isset($_SESSION["UserID"])) {
-        header("Location: http://localhost/drug_dispensary/app/public/index.php?action=login&role=Admin");
+        header("Location: ../public/index.php?action=login&role=admin");
         exit;
     }
 
     // Database connection
-    include('C:xampp/htdocs/drug_dispensary/app/config/database.php');
+    include('../config/database.php');
     // Retrieve admin details
     $adminId = $_SESSION["UserID"];
     if(isset($_GET['logout'])){
         unset($adminId);
         session_destroy();
-        header("Location: http://localhost/drug_dispensary/app/public/index.php?action=login&role=Admin");
+        header("Location: ../public/index.php?action=login&role=admin");
 
     }
-    $query = "SELECT * FROM users WHERE UserID='$adminId' AND Role='Admin'";
+    $query = "SELECT * FROM admin WHERE adminID='$adminId'";
     $result = mysqli_query($conn, $query);
     $admin = mysqli_fetch_assoc($result);
 
@@ -30,8 +30,8 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MataDrugs</span>
         </a>
         <div class="flex items-center">
-            <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"><?php echo $admin['Username']?><a>
-            <a href="http://localhost/drug_dispensary/app/views/Admin/index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-red-600 dark:text-red-500 hover:underline">Logout</a>
+            <a href="user_details.html" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"><?php echo $admin['UserName']?><a>
+            <a href="../views/admin/index.php?logout=<?php echo $adminId; ?>" class="text-sm  text-red-600 dark:text-red-500 hover:underline">Logout</a>
         </div>
     </div>
 </nav>
@@ -43,10 +43,10 @@
                     <a href="index.php" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="http://localhost/drug_dispensary/app/public/index.php?action=display" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
+                    <a href="../public/index.php?action=display" class="text-gray-900 dark:text-white hover:underline">Drugs</a>
                 </li>
                 <li>
-                    <a href="users.php" class="text-gray-900 dark:text-white hover:underline">Users</a>
+                    <a href="../public/index.php?action=displayUsers" class="text-gray-900 dark:text-white hover:underline">Users</a>
                 </li>
                 <li>
                     <a href="prescriptions.php" class="text-gray-900 dark:text-white hover:underline">Prescriptions</a>

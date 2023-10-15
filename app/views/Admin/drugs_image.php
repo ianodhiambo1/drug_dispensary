@@ -10,7 +10,7 @@
 
 <body>
     <!-- Navbar    -->
-    <?php include('C:/xampp/htdocs/drug_dispensary/app/views/inc/admin_navbar.php') ?>
+    <?php include('../views/inc/admin_navbar.php')?> 
     <!-- Navbar    -->
 
 
@@ -44,12 +44,12 @@
                     </a>
                     <div class="px-5 pb-5">
                         <a href="#">
-                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 "><?php echo $drug['DrugName'];?></h5>
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 "><?php echo $drug['Name'];?></h5>
                         </a>
 
                         <div class="flex items-center justify-between">
                             <span class="text-3xl font-bold text-gray-900 "><?php echo $drug['Price'];?></span>
-                            <a href="../public/index.php?action=viewDrug&id=<?php echo $drug['DrugID'];?>"
+                            <a href="../public/index.php?action=viewDrug&id=<?php echo $drug['MedicineID'];?>"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">View
                                 Details</a>
                         </div>

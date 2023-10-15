@@ -7,7 +7,7 @@ class DrugModel{
         $this->db = $db;
     }
     public function getAllDrugs(){
-        $sql = "SELECT * FROM drugs";
+        $sql = "SELECT * FROM medicine";
         $result = $this->db->query($sql);
 
         if($result ==false){
@@ -20,7 +20,7 @@ class DrugModel{
         return $drugs;
     }
     public function getData($id){
-        $sql = "SELECT * FROM drugs WHERE DrugID=".$id;
+        $sql = "SELECT * FROM medicine WHERE MedicineID=".$id;
         $result = $this->db->query($sql);
 
         if($result ==false){
@@ -33,7 +33,7 @@ class DrugModel{
         return $drugs;
     }
     public function getCategory($category){
-        $sql = "SELECT * FROM drugs WHERE Category = ?";
+        $sql = "SELECT * FROM medicine WHERE Category = ?";
         $stmt= $this->db->prepare($sql);
         if(!$stmt){
             return false;
@@ -54,15 +54,16 @@ class DrugModel{
     }
     public function AddDrug($name, $pharmco,$price,$category,$description,$imageUrl){
         $imageUrl="../uploads/".$imageUrl;
-        $sql="INSERT INTO drugs (DrugName,PharmaceuticalCompany,Price,Category,Description,ImageUrl) 
-        VALUES (?,?,?,?,?,?)";
+        $id=rand(2000,7000);
+        $sql="INSERT INTO medicine (MedicineID,Name,Company,Price,Category,Description,ImageUrl) 
+        VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("ssssss",$name, $pharmco,$price,$category,$description,$imageUrl);
+        $stmt->bind_param("sssssss",$id,$name, $pharmco,$price,$category,$description,$imageUrl);
         return $stmt->execute();
 
     }
     public function updateDrug($id, $name, $pharmco, $price, $category, $description) {
-        $sql = "UPDATE `drugs` SET `DrugName`='$name', `PharmaceuticalCompany`='$pharmco', `Price`='$price', `Category`='$category', `Description`='$description' WHERE `drugs`.`DrugID`=$id;";
+        $sql = "UPDATE `medicine` SET `Name`='$name', `Company`='$pharmco', `Price`='$price', `Category`='$category', `Description`='$description' WHERE `medicine`.`MedicineID`=$id;";
         echo $sql;
         
         $result = $this->db->query($sql);
@@ -71,7 +72,7 @@ class DrugModel{
 
 
     public function deleteDrug($id) {
-        $sql = "DELETE FROM drugs WHERE DrugID=?";
+        $sql = "DELETE FROM medicine WHERE MedcineID=?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $id);
         return $stmt->execute();

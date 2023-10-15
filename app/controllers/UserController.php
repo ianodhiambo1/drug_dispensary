@@ -19,8 +19,10 @@ class UserController {
 
             if ($user && password_verify($password, $user["Password"])) {
                 // Successful login, redirect to a welcome page or dashboard
-                $_SESSION['UserID'] = $user['UserID'];
-                header("Location: ../views/$role/index.php ");
+                $roleID = ucfirst($role.'ID');
+
+                $_SESSION['UserID'] = $user[$roleID];
+                header("Location: ../public/index.php?action=index&role=$role");
                 exit;
             } else {
                 // Invalid login, show an error message
@@ -30,6 +32,10 @@ class UserController {
 
         // Display the login form
         require_once("../views/$role/login.php");
+    }
+    public function index($role){
+
+        require_once("../views/$role/index.php");
     }
 
 
@@ -50,6 +56,13 @@ class UserController {
 
         // Display the sign-up form
         require_once("../views/$role/login.php");
+    }
+    public function displayUsers(){
+        $patients = $this->model->getPatient();
+        $doctors = $this->model->getDoctor();
+        $pharmacists = $this->model->getPharmacist();
+
+        require_once("../views/admin/users.php");
     }
 }
 ?>

@@ -8,7 +8,7 @@
     <title>Dashboard</title>
 </head>
 <body>
-<?php include('../inc/admin_navbar.php')?>  
+<?php include('../views/inc/admin_navbar.php')?>  
 
 
 </body>

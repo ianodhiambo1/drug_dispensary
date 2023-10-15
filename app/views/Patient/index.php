@@ -11,7 +11,7 @@
 
 <body>
     <!-- Navbar -->
-    <?php include('../inc/navbar.php'); ?>
+    <?php include('../views/inc/navbar.php'); ?>
     <!-- Hero section -->
     <section class="bg-gray-900 text-white">
         <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">

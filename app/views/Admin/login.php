@@ -8,7 +8,6 @@
 
     <title>Login Admin</title>
     <link rel="stylesheet" href="../views/css/style_login.css" />
-    <script src="../custom-scripts.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -55,7 +54,7 @@
       
     <div class="form signup">
         <header>Admin Sign Up</header>
-        <form action="../public/index.php?action=signup&role=Admin" method="POST">
+        <form action="../public/index.php?action=signup&role=admin" method="POST">
           <input type="text" placeholder="User name" name="Username" required />
           <input type="password" placeholder="Password" name="Password" required />
           <div class="checkbox">
@@ -67,7 +66,7 @@
       </div>
       <div class="form login">
         <header>Admin Login</header>
-        <form action="../public/index.php?action=login&role=Admin" method="POST">
+        <form action="../public/index.php?action=login&role=admin" method="POST">
           <input type="text" placeholder="Username" name="Username" required />
           <input type="password" placeholder="Password" name="Password" required />
           <input type="submit" value="Login" />

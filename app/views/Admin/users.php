@@ -58,7 +58,7 @@
     }
     ?>
   
-
+  <h3 class="text-3xl font-bold text-center ">Patient</h3>
  <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5 w-10/12 mx-auto">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -67,19 +67,22 @@
                     ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Name
+                    UserName
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Pharmaceutical Company
+                    WalletID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Description
+                    FirstName
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                    LastName
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    City
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    PostalCode
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -87,30 +90,141 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($drugs as $drug): ?>
+            <?php foreach ($patients as $patient): ?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <?php echo $drug['MedicineID']; ?>
+                    <?php echo $patient['PatientID']; ?>
                 </th>
                 <td class="px-6 py-4">
-                    <?php echo $drug['Name']; ?>
+                    <?php echo $patient['UserName']; ?>
                 </td>
                 <td class="px-6 py-4">
-                <?php echo $drug['Company']; ?>
+                <?php echo $patient['WalletID']; ?>
                 </td>
                 <td class="px-6 py-4">
-                <?php echo $drug['Description']; ?>
+                <?php echo $patient['FirstName']; ?>
                 </td>
                 <td class="px-6 py-4">
-                <?php echo $drug['Price']; ?>
+                <?php echo $patient['LastName']; ?>
                 </td>
                 <td class="px-6 py-4">
-                <?php echo $drug['Category']; ?>
+                <?php echo $patient['City']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $patient['PostalCode']; ?>
                 </td>
                 <td class="flex items-center px-6 py-4 space-x-3">
-                    <a href="../public/index.php?action=editDrug&id=<?php echo $drug['MedicineID'];?>" 
-                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $drug['MedicineID'];?>" 
+                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $patient['PatientID'];?>" 
+                    onclick="return confirm('Are you sure you want to delete this drug')" 
+                    class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<h3 class="text-3xl font-bold text-center ">Doctor</h3>
+ <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5 w-10/12 mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    UserName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    FirstName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    LastName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Speciality
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($doctors as $doctor): ?>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?php echo $doctor['DoctorID']; ?>
+                </th>
+                <td class="px-6 py-4">
+                    <?php echo $doctor['UserName']; ?>
+                </td>
+                
+                <td class="px-6 py-4">
+                <?php echo $doctor['FirstName']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $doctor['LastName']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $doctor['Speciality']; ?>
+                </td>
+                
+                <td class="flex items-center px-6 py-4 space-x-3">
+                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $doctor['DoctorID'];?>" 
+                    onclick="return confirm('Are you sure you want to delete this drug')" 
+                    class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<h3 class="text-3xl font-bold text-center ">Pharmacist</h3>
+ <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5 w-10/12 mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    UserName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    FirstName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    LastName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Speciality
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($pharmacists as $pharmacist): ?>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?php echo $pharmacist['PharmacistID']; ?>
+                </th>
+                <td class="px-6 py-4">
+                    <?php echo $pharmacist['UserName']; ?>
+                </td>
+                
+                <td class="px-6 py-4">
+                <?php echo $pharmacist['FirstName']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $pharmacist['LastName']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $pharmacist['Location']; ?>
+                </td>
+                
+                <td class="flex items-center px-6 py-4 space-x-3">
+                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $doctor['DoctorID'];?>" 
                     onclick="return confirm('Are you sure you want to delete this drug')" 
                     class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                 </td>
