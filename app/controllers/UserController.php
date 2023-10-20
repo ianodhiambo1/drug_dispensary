@@ -64,6 +64,10 @@ class UserController {
 
         require_once("../views/admin/users.php");
     }
+    public function patientDetails($id){
+        $patients = $this->model->getOnePatient($id);
+        require_once('../views/patient/details.php');
+    }
 }
 ?>
 

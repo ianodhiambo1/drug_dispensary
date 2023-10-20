@@ -27,13 +27,23 @@ class DrugController
         }
         require("../views/Admin/drugs_image.php");
     }
-    public function shop()
+    public function shop($category)
     {
-        $drugs = $this->model->getAllDrugs();
+        if($category=null){
+            $drugs = $this->model->getAllDrugs();
         if ($drugs === false) {
             echo "Error fetching drug details";
             return;
         }
+        }
+        else{
+            $drugs = $this->model->getCategory($category);
+        if ($drugs === false) {
+            echo "Error fetching drug details";
+            return;
+        }
+        }
+        
         require("../views/Patient/shop.php");
     }
     public function addDrugs()

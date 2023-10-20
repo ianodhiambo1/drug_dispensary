@@ -12,7 +12,7 @@ $drugModel = new DrugModel($db);
 // Include the controller and handle actions
 $action = isset($_GET['action']) ? $_GET['action'] : 'login';
 $role = isset($_GET['role']) ? $_GET['role'] : 'patient';
-$category = isset($_GET['cat']) ? $_GET['cat'] : 'Analgesics';
+$category = isset($_GET['cat']) ? $_GET['cat']:'';
 $id = isset($_GET['id']) ? $_GET['id'] : '0';
 use App\Controllers\UserController;
 use App\Controllers\DrugController;
@@ -22,29 +22,47 @@ $drugController = new DrugController($drugModel);
 
 if ($action === 'login') {
     $controller->login($role);
-} elseif ($action === 'signup') {
+} 
+elseif ($action === 'signup') {
     $controller->signup($role);
-} elseif ($action === 'index') {
+} 
+elseif ($action === 'index') {
     $controller->index($role);
-} elseif ($action === 'display') {
+}
+elseif ($action === 'patientDetails') {
+    $controller->patientDetails($id);
+}
+// elseif ($action === 'updatePatientDetails') {
+//     $controller->updatePatientDetails($id);
+// }
+elseif ($action === 'display') {
     $drugController->displayDrugs();
-} elseif ($action === 'displayImage') {
+} 
+elseif ($action === 'displayImage') {
     $drugController->displayDrugsImage();
-} elseif ($action === 'displayCategory') {
+} 
+elseif ($action === 'displayCategory') {
     $drugController->displayCategory($category);
-} elseif ($action === 'addDrug') {
+} 
+elseif ($action === 'addDrug') {
     $drugController->addDrugs();
-} elseif ($action === 'editDrug') {
+} 
+elseif ($action === 'editDrug') {
     $drugController->editDrugs($id);
-} elseif ($action === 'deleteDrug') {
+} 
+elseif ($action === 'deleteDrug') {
     $drugController->deleteDrugs($id);
-} elseif ($action === 'viewDrug') {
+} 
+elseif ($action === 'viewDrug') {
     $drugController->displayDrugDetails($id);
-} elseif ($action === 'shop') {
-    $drugController->shop();
-} elseif($action === 'displayUsers'){
+} 
+elseif ($action === 'shop') {
+    $drugController->shop($category);
+} 
+elseif($action === 'displayUsers'){
     $controller->displayUsers();
-}else {
-    // Handle other actions or display an error
+}
+else {
+    $controller->login($role);
 }
 ?>

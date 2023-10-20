@@ -3,28 +3,28 @@
 
     // Check if the user is logged in as an patient
     if (!isset($_SESSION["UserID"])) {
-        header("Location: http://localhost/drug_dispensary/app/public/index.php?action=login&role=Patient");
+        header("Location: ../public/index.php?action=login&role=patient");
         exit;
     }
 
     // Database connection
-    include('C:xampp/htdocs/drug_dispensary/app/config/database.php');
+    include('../config/database.php');
     // Retrieve patient details
     $patientId = $_SESSION["UserID"];
     if(isset($_GET['logout'])){
         unset($patientId);
         session_destroy();
-        header("Location: http://localhost/drug_dispensary/app/public/index.php?action=login&role=Patient");
+        header("Location: ../public/index.php?action=login&role=patient");
 
     }
-    $query = "SELECT * FROM users WHERE UserID='$patientId' AND Role='Patient'";
+    $query = "SELECT * FROM patient WHERE PatientID='$patientId'";
     $result = mysqli_query($conn, $query);
     $patient = mysqli_fetch_assoc($result);
 
 ?>
 
 
-
+<link href="../public/images/android-chrome-512x512.png" rel="icon" />
 <nav class=" border-gray-200 bg-gray-900">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
     <a href="index.php" class="flex items-center">
@@ -32,8 +32,8 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">MataDrugs</span>
         </a>
         <div class="flex items-center">
-            <a href="tel:5541251234" class="mr-6 text-sm  text-gray-500 text-white hover:underline"><?php echo $patient['Username'];?></a>
-            <a href="http://localhost/drug_dispensary/app/views/Patient/index.php?logout=<?php echo $patientId; ?>" class="text-sm  text-red-600 text-red-500 hover:underline">Logout</a>
+            <a href="../public/index.php?action=patientDetails&id=<?php echo $patient['PatientID']?>" class="mr-6 text-sm  text-gray-500 text-white hover:underline"><?php echo $patient['UserName'];?></a>
+            <a href="../views/Patient/index.php?logout=<?php echo $patientId; ?>" class="text-sm  text-red-600 text-red-500 hover:underline">Logout</a>
         </div>
     </div>
 </nav>
@@ -45,7 +45,7 @@
                     <a href="#" class="text-gray-900 text-white hover:underline" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="http://localhost/drug_dispensary/app/public/index.php?action=shop" class="text-gray-900 text-white hover:underline">Shop</a>
+                    <a href="../public/index.php?action=shop" class="text-gray-900 text-white hover:underline">Shop</a>
                 </li>
                 <li>
                     <a href="#" class="text-gray-900 text-white hover:underline">Team</a>

@@ -17,12 +17,12 @@
         header("Location: ../public/index.php?action=login&role=admin");
 
     }
-    $query = "SELECT * FROM admin WHERE adminID='$adminId'";
+    $query = "SELECT * FROM admin WHERE AdminID='$adminId'";
     $result = mysqli_query($conn, $query);
     $admin = mysqli_fetch_assoc($result);
 
     ?>
-
+<link href="../public/images/android-chrome-512x512.png" rel="icon" />
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a href="index.html" class="flex items-center">
