@@ -43,6 +43,7 @@ class UserModel {
             LEFT JOIN wallet AS w ON u.WalletID = w.WalletID
             WHERE p.PatientID = $id;
         ";
+        
         $result = $this->db->query($sql);
 
         if($result ==false){

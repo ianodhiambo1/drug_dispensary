@@ -14,7 +14,7 @@
   </div>
   <div class="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
     <div class="border-b border-gray-200 pb-6">
-      <p class="text-sm leading-none text-gray-600  "><?php echo $drug['DrugName'];?></p>
+      <p class="text-sm leading-none text-gray-600  "><?php echo $drug['Name'];?></p>
       <h1 class="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 dark:text-white mt-2">Balenciaga Signature Sweatshirt</h1>
     </div>
     <div class="py-4 border-b border-gray-200 flex items-center justify-between">
@@ -47,7 +47,7 @@
     </button>
     <div>
       <p class="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600  mt-7"><?php echo $drug['Description'];?></p>
-      <p class="text-base leading-4 mt-7 text-gray-600 ">Product ID: <?php echo $drug['DrugID'];?></p>
+      <p class="text-base leading-4 mt-7 text-gray-600 ">Product ID: <?php echo $drug['MedicineID'];?></p>
       <p class="text-base leading-4 mt-4 text-gray-600 ">Length: 13.2 inches</p>
       <p class="text-base leading-4 mt-4 text-gray-600 ">Height: 10 inches</p>
       <p class="text-base leading-4 mt-4 text-gray-600 ">Depth: 5.1 inches</p>

@@ -44,6 +44,10 @@ elseif ($action === 'displayImage') {
 elseif ($action === 'displayCategory') {
     $drugController->displayCategory($category);
 } 
+elseif ($action === 'addCategory') {
+    $drugController->addCategory();
+} 
+
 elseif ($action === 'addDrug') {
     $drugController->addDrugs();
 } 

@@ -39,6 +39,7 @@
 </nav>
 <nav class="bg-gray-50 bg-gray-700">
     <div class="max-w-screen-xl px-4 py-3 mx-auto">
+        
         <div class="flex items-center">
             <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
                 <li>

@@ -27,11 +27,9 @@
             </div>
             <div>
                 <label class="text-white dark:text-gray-200" for="passwordConfirmation">Category</label>
-                <select name="Category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                    <option>Analgesics</option>
-                    <option>Cardiovasculars</option>
-                    <option>Vitamins</option>
+                <select name="Category" id="categorySelect" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 </select>
+                
         </div>
             <div>
                 <label class="text-white dark:text-gray-200" for="passwordConfirmation">Description</label>

@@ -18,9 +18,15 @@ class DrugController
 
         require_once("../views/Admin/drugs.php");
     }
+
     public function displayDrugsImage()
     {
         $drugs = $this->model->getAllDrugs();
+        $categories = $this->model->getAllCategories();
+        if ($categories === false) {
+            echo "Error fetching category details";
+            return;
+        }
         if ($drugs === false) {
             echo "Error fetching drug details";
             return;
@@ -120,6 +126,35 @@ class DrugController
     public function displayCategory($category)
     {
         $drugs = $this->model->getCategory($category);
+        $categories = $this->model->getAllCategories();
+        if ($categories === false) {
+            echo "Error fetching category details";
+            return;
+        }
+        if ($drugs === false) {
+            echo "Error fetching drug details";
+            return;
+        }
+        
+
+        require("../views/Admin/drugs_image.php");
+    }
+    public function addCategory()
+    {   
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $category = $_POST['Category'];
+        }
+        $drug = $this->model->addCategory($category);
+        if ($drug === false) {
+            echo "Error adding drug details";
+            return;
+        }
+        $categories = $this->model->getAllCategories();
+        if ($categories === false) {
+            echo "Error fetching category details";
+            return;
+        }
+        $drugs=$this->model->getData(); 
         if ($drugs === false) {
             echo "Error fetching drug details";
             return;

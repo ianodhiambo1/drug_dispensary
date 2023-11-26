@@ -19,6 +19,7 @@
             <li> <a href="../public/index.php?action=display" class="hover:underline">Table</a></li>
             <li><a href="../public/index.php?action=displayImage" class="hover:underline">Image</a></li>
             <li><a href="../public/index.php?action=addDrug" class="hover:underline">Add Drug</a></li>
+            <li><a id="addCategoryBtn" class="hover:underline cursor-pointer">Add Category</a></li>
         </ul>
     </div>
 
@@ -26,11 +27,24 @@
         <div class="sideBar mt-5 ">
             <h5 class="text-xl font-bold">Categories</h5>
             <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700">
-            <ul class="ml-1">
-                <li><a href="../public/index.php?action=displayCategory&cat=Analgesics">Analgesics</a></li>
-                <li><a href="../public/index.php?action=displayCategory&cat=Cardiovasculars">Cardiovasculars</a></li>
-                <li><a href="../public/index.php?action=displayCategory&cat=Vitamins">Vitamins</a></li>
+            <ul class="ml-1" id="categoryList">
+            <?php
+
+            foreach ($categories as $category) {
+                $category_name = $category['category_name'];
+                echo "<li><a href='../public/index.php?action=displayCategory&cat=$category_name'>$category_name</a></li>";
+            }
+            ?>
+
             </ul>
+            <div class="addCategory">
+                <form action="../public/index.php?action=addCategory" method="post">
+
+                    <input name="Category" id="categoryInput" type="text" class="hidden block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    <input type="submit" name="submit" value="Add New"  class="text-white bg-blue-700 mt-2 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+
+                </form>
+                </div>
         </div>
 
         <div class="drugCards ml-5 flex flex-wrap">
@@ -57,8 +71,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
-
-
+        <script src="../views/js/category.js"></script>
 </body>
 
 </html>

@@ -32,6 +32,19 @@ class DrugModel{
         }
         return $drugs;
     }
+    public function getAllCategories(){
+        $sql = "SELECT * FROM categories";
+        $result = $this->db->query($sql);
+
+        if($result ==false){
+            return false;
+        }
+        $categories=array();
+        while($row=$result->fetch_assoc()){
+            $categories[]=$row;
+        }
+        return $categories;
+    }
     public function getCategory($category){
         $sql = "SELECT * FROM medicine WHERE Category = ?";
         $stmt= $this->db->prepare($sql);
@@ -59,6 +72,14 @@ class DrugModel{
         VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("sssssss",$id,$name, $pharmco,$price,$category,$description,$imageUrl);
+        return $stmt->execute();
+
+    }
+    public function AddCategory($category){
+        $sql="INSERT INTO categories (category_name) 
+        VALUES (?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("s",$category);
         return $stmt->execute();
 
     }

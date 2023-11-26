@@ -11,6 +11,7 @@
 
 <body class="bg-gray-800 ">
     <?php include('../views/inc/navbar.php'); ?>
+    <div class="title mt-4 h-14 bg-grey-300 text-center font-bold m-auto max-w-screen-xl"> <h2 class="text-4xl font-extrabold dark:text-white" >Your Details</h2></div>
     <div class="section-1  flex justify-between m-auto max-w-screen-xl px-4 py-3 border-solid border-2">
         <!-- Details Card -->
         <div class="bg-white m-auto shadow-xl rounded-lg py-3 w-96">
