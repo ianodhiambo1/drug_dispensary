@@ -57,6 +57,9 @@ elseif ($action === 'editDrug') {
 elseif ($action === 'deleteDrug') {
     $drugController->deleteDrugs($id);
 } 
+elseif ($action === 'deleteCategory') {
+    $drugController->deleteCategory($id);
+} 
 elseif ($action === 'viewDrug') {
     $drugController->displayDrugDetails($id);
 } 

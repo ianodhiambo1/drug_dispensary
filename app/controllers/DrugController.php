@@ -121,6 +121,11 @@ class DrugController
                 echo "Drug Adding failed";
             }
         }
+        $categories = $this->model->getAllCategories();
+        if ($categories === false) {
+            echo "Error fetching category details";
+            return;
+        }
         require("../views/Admin/add_drugs.php");
     }
     public function displayCategory($category)
@@ -143,6 +148,10 @@ class DrugController
     {   
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $category = $_POST['Category'];
+            if ($category === "") {
+                header("Location: ../public/index.php?action=displayImage");
+                exit;
+            }
         }
         $drug = $this->model->addCategory($category);
         if ($drug === false) {
@@ -154,7 +163,7 @@ class DrugController
             echo "Error fetching category details";
             return;
         }
-        $drugs=$this->model->getData(); 
+        $drugs=$this->model->getAllDrugs(); 
         if ($drugs === false) {
             echo "Error fetching drug details";
             return;
@@ -198,6 +207,15 @@ class DrugController
 
         if ($success) {
             header("Location: ../public/index.php?action=display&message=2");
+        } else {
+            return "Error deleting drug";
+        }
+    }
+    public function deleteCategory($id) {
+        $success = $this->model->deleteCategory($id);
+
+        if ($success) {
+            header("Location: ../public/index.php?action=displayImage&message=2");
         } else {
             return "Error deleting drug";
         }

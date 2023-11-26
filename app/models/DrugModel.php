@@ -98,6 +98,12 @@ class DrugModel{
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+    public function deleteCategory($id) {
+        $sql = "DELETE FROM categories WHERE id=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
 }
 
 
