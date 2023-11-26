@@ -283,7 +283,7 @@ h1, h2, h3, h4, h5, h6 {
       </div>
       <div class="form login">
         <header>Login</header>
-        <form action="../public/index.php?action=login&role=admin" method="POST">
+        <form action="/index.php/user/login" method="POST">
           <input type="text" placeholder="Username" name="Username" required />
           <input type="password" placeholder="Password" name="Password" required />
           <input type="submit" value="Login" />
