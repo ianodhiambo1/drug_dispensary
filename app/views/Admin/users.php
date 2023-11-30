@@ -15,7 +15,7 @@
     <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm ">
         <li> <a href="../public/index.php?action=display" class="hover:underline">Table</a></li>
         <li><a href="../public/index.php?action=displayImage" class="hover:underline">Image</a></li>
-        <li><a href="../public/index.php?action=addDrug" class="hover:underline">Add Drug</a></li>
+        <li><a href="../public/index.php?action=addUser" class="hover:underline">Add Api User</a></li>
     </ul>
 </div>
 <?php
@@ -114,7 +114,75 @@
                 <?php echo $patient['PostalCode']; ?>
                 </td>
                 <td class="flex items-center px-6 py-4 space-x-3">
-                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $patient['PatientID'];?>" 
+                    <a href="../public/index.php?action=deletePatient&id=<?php echo $patient['PatientID'];?>" 
+                    onclick="return confirm('Are you sure you want to delete this drug')" 
+                    class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+  <h3 class="text-3xl font-bold text-center ">API Users</h3>
+ <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5 w-10/12 mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    UserName
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Gender
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Api Key
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Date Created
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Expiry Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?php echo $user['user_id']; ?>
+                </th>
+                <td class="px-6 py-4">
+                    <?php echo $user['username']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $user['email']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $user['gender']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $user['api_key']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $user['date_created']; ?>
+                </td>
+                <td class="px-6 py-4">
+                <?php echo $user['expiry_date']; ?>
+                </td>
+                <td class="flex items-center px-6 py-4 space-x-3">
+                    <a href="../public/index.php?action=editUser&id=<?php echo $user['user_id'];?>" 
+                    onclick="return confirm('Are you sure you want to edit this user')" 
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="../public/index.php?action=deleteUser&id=<?php echo $user['user_id'];?>" 
                     onclick="return confirm('Are you sure you want to delete this drug')" 
                     class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                 </td>
@@ -169,7 +237,7 @@
                 </td>
                 
                 <td class="flex items-center px-6 py-4 space-x-3">
-                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $doctor['DoctorID'];?>" 
+                    <a href="../public/index.php?action=deleteDoctor&id=<?php echo $doctor['DoctorID'];?>" 
                     onclick="return confirm('Are you sure you want to delete this drug')" 
                     class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                 </td>
@@ -224,7 +292,7 @@
                 </td>
                 
                 <td class="flex items-center px-6 py-4 space-x-3">
-                    <a href="../public/index.php?action=deleteDrug&id=<?php echo $doctor['DoctorID'];?>" 
+                    <a href="../public/index.php?action=deletePharmacist&id=<?php echo $doctor['DoctorID'];?>" 
                     onclick="return confirm('Are you sure you want to delete this drug')" 
                     class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                 </td>

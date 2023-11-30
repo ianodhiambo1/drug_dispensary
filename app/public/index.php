@@ -51,6 +51,7 @@ elseif ($action === 'addCategory') {
 elseif ($action === 'addDrug') {
     $drugController->addDrugs();
 } 
+
 elseif ($action === 'editDrug') {
     $drugController->editDrugs($id);
 } 
@@ -69,6 +70,15 @@ elseif ($action === 'shop') {
 elseif($action === 'displayUsers'){
     $controller->displayUsers();
 }
+elseif ($action === 'addUser') {
+    $controller->addUser();
+} 
+elseif ($action === 'editUser') {
+    $controller->editUser($id);
+} 
+elseif ($action === 'deleteUser') {
+    $controller->deleteUser($id);
+} 
 else {
     $controller->login($role);
 }
