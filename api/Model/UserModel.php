@@ -8,16 +8,15 @@ class UserModel extends Database
     {
 
         parent::__construct();
-
     }
 
     public function getUsers($limit)
     {
 
         return $this->select("SELECT * FROM users ORDER BY username  ASC LIMIT ?", ["i", $limit]);
-
     }
-    public function generateApiKey() {
+    public function generateApiKey()
+    {
         return bin2hex(random_bytes(32)); // 64 characters
     }
     public function registerUser($username, $password)
@@ -46,7 +45,7 @@ class UserModel extends Database
         }
         $user_id = $user['user_id'];
         $api_key = $this->generateApiKey();
-        
+
         $stmt = $this->connection->prepare('INSERT INTO api_keys (user_id, api_key) VALUES (?, ?)');
         $stmt->bind_param('is', $user_id, $api_key);
         $stmt->execute();
@@ -54,7 +53,6 @@ class UserModel extends Database
 
         echo json_encode(['api_key' => $api_key, 'message' => 'API key generated successfully']);
         return true;
-
     }
     public function getUserByUsername($username)
     {
@@ -71,32 +69,26 @@ class UserModel extends Database
         $stmt->close();
 
         return $result;
-
     }
     public function getApiUserByUsername($id)
     {
-        error_log($id);
-        $stmt = $this->connection->prepare("SELECT *
-        FROM users
-        JOIN api ON users.user_id = api.user_id
-        WHERE users.user_id = ?; 
-        ");
+        $sql = "SELECT *
+            FROM users
+            JOIN api ON users.user_id = api.user_id
+            WHERE users.user_id = $id";
 
-        $stmt->bind_param("i", $id);
-
-        $stmt->execute();
-
-        $result = $stmt->get_result();
+        // Execute the query
+        $result = $this->connection->query($sql);
+        // Check if the query execution succeeded
+        if ($result === false) {
+            error_log("Error executing query: " . $this->connection->error);
+            return false;
+        }
+        // Fetch the data
         $user = array();
         while ($row = $result->fetch_assoc()) {
             $user[] = $row;
         }
-
-        $stmt->close();
-
         return $user;
-
     }
-
 }
-?>

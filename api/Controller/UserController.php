@@ -109,9 +109,10 @@ class UserController extends BaseController
                 if ($user) {
                     error_log('User exists');
                     if(password_verify($password, $user["password"])){
+                        session_start();
                         error_log('User logged in');
-                        $_SESSION['user'] = $user["user_id"];
-                        error_log($_SESSION['user']);
+                        $_SESSION['user'] = $user['user_id'];
+                        $GLOBALS['a'] = $user['user_id'];
                         header("Location: /index.php/user/home");
                         exit;
                     }else{
@@ -149,10 +150,10 @@ class UserController extends BaseController
         }
     }
     function profileAction(){
-        
+        session_start();
         if(isset($_SESSION['user'])!==null&&isset($_SESSION['user'])!==""){
             $userModel = new UserModel();
-            $id = isset($_SESSION['user']);
+            $id = $_SESSION['user'];
             error_log($id);
             $user = $userModel->getApiUserByUsername($id);
             require_once("./views/profile.php");
